@@ -10,11 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var nameTF: UITextField!
+    
+    var text = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
+        
+        
     }
 
-
+    @IBAction func btn_send(_ sender: UIButton) {
+        
+        text = nameTF.text!
+        
+        performSegue(withIdentifier: "segueroad", sender: self)
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! SecondViewController
+        
+        vc.result = text
+        
+       // present(vc, animated: true)
+        
+    }
+    
 }
 
